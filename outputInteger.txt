@@ -1,0 +1,79 @@
+# OUTPUT POSITIVE INTEGER X
+
+# transform x = 12345 into char stackay "12345"
+Z;	a;	x Z;	Z a;	# a = x
+stack					# stack[0] = 0
+loop:
+	# c = a%10
+	Z Z ret1:MOD
+	Z;	Z_ascii Z;	Z c;	Z	# c += '0' => translate number to char
+	M1 p						# p++
+	M1 stack					# stack[0] hold the length => increase length	
+	Z;	c Z;	Z p:stack;	Z	# *p = c
+	
+	# a = a/10
+	Z Z ret2:DIV				# c = a/10
+	a;	Z;	c Z;	Z a;	Z	# a = c
+	
+	Z a endloop					# if a==0 then break
+	Z Z loop					# else loop
+endloop:
+
+# OUTPUT
+Z;	top;	stack Z;	Z top;	Z	# top = number of digits of x = length of stack
+Z;	top Z; Z p2;	Z				# pointer p2 = stack + top
+
+loopOutput:								
+	p2:stack (-1)					# output the pointer (pointing to top) 
+	O top							# top--
+	O p2							# point to the next digit
+	Z top endLoopOutput
+	Z Z loopOutput
+endLoopOutput:
+
+ Z Z (-1)				# END PROGRAM
+#================================================
+# c = a%b
+# c = a%b
+MOD:
+c;	Z
+a Z;	Z c;	Z;
+
+loopMod:
+b c endLoopMod
+Z Z loopMod
+endLoopMod:
+
+c Z skip
+Z;	b Z;	Z c;	Z
+
+skip:
+Z Z ret1+1
+#================================================
+# c = a/b
+DIV:
+ta;	tb;	c
+t;		b t;  	t tb			# tb = b
+t;		a t;	t ta;	M1 ta	# ta = a+1
+
+l2:
+tb ta el2
+M1 c
+Z Z l2
+
+el2:Z Z
+Z Z ret2+1
+#================================================
+# CONST
+.Z: 0
+.M1: (-1)
+.O: 1
+.Z_ascii: '0'
+   
+#VAR
+.x: 123456
+.a:0	b:10		c:0
+.ta:0	tb:0	t:0
+.ret:0
+.top:0
+.stack:0	# output stackay. stack[0] = length of the stackay. If x = 567 then stack[0] = 3, stack[1] = 5, stack[2] = 6, stack[3] = 7

@@ -1,0 +1,20 @@
+# *tb = *b
+tb;	Z
+b Z;	Z tb	
+
+# if (b-a <= 0) Max = a;	else Max = b
+Z
+a tb ?+3
+b Z  ?+3
+a Z
+Z Max
+
+# output
+Max (-1)
+Z Z (-1)
+
+#=================================================
+.a: 98	b: 50
+.Z: 0
+.tb:0
+.Max: 0

@@ -1,0 +1,34 @@
+# First output, result: ab
+a (-1);	b (-1);	ENDLINE (-1)			# First output
+
+# Swap then output, result: ba
+Z;	ret;	?-1 Z;	Z ret;	M12 ret		# ret = address of the next instruction after call function swap
+Z Z swap
+a (-1);	b (-1);	ENDLINE (-1)			# Second output
+
+# Swap again then output result: ab
+Z;	ret;	?-1 Z;	Z ret;	M12 ret		# Save the return address
+Z Z swap
+a (-1);	b (-1)							# Third output
+
+Z Z (-1)
+#=============================================
+swap:
+Z;	ta;	tb
+a ta;	b tb
+a;	b
+ta b;	tb a
+
+# RETURN
+Z;	retSwap;	ret Z;	Z retSwap
+Z Z retSwap:0
+#=============================================
+# CONSTANTS
+.Z: 0
+.ENDLINE: '\n'
+.M1: (-1)
+.M12: (-12)
+
+# VARIABLES
+.a: 97	b: 98	ta:0	tb:0
+.ret: 0

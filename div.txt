@@ -1,0 +1,19 @@
+# c = a/b
+ta;	tb;	c
+t;		b t;  	t tb			# tb = b
+t;		a t;	t ta;	M1 ta	# ta = a+1
+
+loopDiv:			
+tb ta endLoopDiv					# while (ta > 0) do:	ta -= tb, c++
+M1 c													
+Z Z loopDiv
+
+endLoopDiv:Z Z
+c (-1)
+0 0 (-1)
+ 
+#==============================================
+.a:204	b:2		c:0
+.t:0	ta:0	tb:0
+.M1:(-1)
+.Z:0

@@ -1,0 +1,20 @@
+# c = a*b
+ta;	tb;	c;	t
+a ta
+b	t;	t	tb
+
+loop:
+Z  tb	endloop
+ta c
+O tb
+Z Z loop
+
+endloop:
+c (-1)
+0 0 (-1)
+ 
+#==============================================
+.a:3	b:33		c:0
+.t:0	ta:0	tb:0	tc:0
+.O:1
+.Z:0

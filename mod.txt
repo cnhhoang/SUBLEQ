@@ -1,0 +1,20 @@
+# c = a%b
+c;	Z					# c = Z = 0
+a Z;	Z c;	Z;		# c = a
+
+loopMod:
+	b c endLoopMod		# while (c > 0) c -= b
+	Z Z loopMod			# loop
+endLoopMod:				# endloop. Now c <= 0
+
+c Z skip				# if (-c <= 0) skip => if (c < 0) do:
+Z;	b Z;	Z c;	Z	# c += b
+
+skip:
+c (-1)
+0 0 (-1)
+ 
+#==============================================
+.a:202 b:101	c:0
+.Z:0
+.M1: (-1)
