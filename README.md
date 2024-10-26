@@ -9,5 +9,5 @@ SUBLEQ is an assembly language that uses only one instruction: SUBtract and Bran
   asm.exe add.txt run && run.exe run
   ```
 
-  # REFERENCE
-  For more information, check the [SUBLEQ Overview](https://esolangs.org/wiki/Subleq#Overview).
+# REFERENCE
+For more information, check the [SUBLEQ Overview](https://esolangs.org/wiki/Subleq#Overview).
